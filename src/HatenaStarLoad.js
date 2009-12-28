@@ -1,13 +1,12 @@
 
 var executeBrowserContext = function(funcOrString) {
     var code = "javascript:(" + encodeURIComponent(funcOrString.toString()) + ")();";
-    console.log(code);
     location.href = code;
 }
 
 var starLoad = function(ev) {
     var code = function() {
-        window.addEventListener('AutoPatchWork.DOMNodeInserted', function(ev) {
+        if (window.Hatena && Hatena.Star) window.addEventListener('AutoPatchWork.DOMNodeInserted', function(ev) {
             var loaders = Hatena.Star.__loaders || {}; Hatena.Star.__loaders  = loaders;
             var requestURL = ev.newValue;
             var loader = loaders[requestURL] || {}; loaders[requestURL] = loader;
@@ -33,13 +32,4 @@ var starLoad = function(ev) {
     }, 10);
 }
 
-window.addEventListener('HatenaStarLoad.CHECK_STAR', starLoad, false);
-
-executeBrowserContext(function() {
-    if (window.Hatena && Hatena.Star) {
-        var ev = document.createEvent('Event');
-        ev.initEvent('HatenaStarLoad.CHECK_STAR', true, true);
-        document.dispatchEvent(ev);
-    };
-});
-
+starLoad();

@@ -2,8 +2,7 @@
   "name": "HatenaStar AutoPageLoad",
   "id": "cd35a0eb91f748188612c249dc62cc77",
   "description": "AutoPagerize/AutoPatchWork で継ぎ足したページにもはてなスターをロード",
-  "version": "0.0.1",
-  "update_url": "http://localhost/example/update.xml",
+  "version": "0.0.2",
   "content_scripts": [
     {
       "run_at": "document_end",
